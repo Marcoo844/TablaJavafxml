@@ -24,6 +24,9 @@ public class Controlador {
 
     private ObservableList<Persona> datos = FXCollections.observableArrayList();
 
+    /**
+     * Méthod para inicializar la tabla
+     */
     @FXML
     private void initialize() {
         // Columna ID automática
@@ -48,6 +51,9 @@ public class Controlador {
         restaurarFilas();
     }
 
+    /**
+     * Méthod para insertar valores en la tabla mediante el botón de añadir
+     */
     @FXML
     private void agregarPersona() {
         String nombre = campoNombre.getText();
@@ -67,6 +73,9 @@ public class Controlador {
         }
     }
 
+    /**
+     * Méthod para eliminar las filas seleccionadas de la tabla
+     */
     @FXML
     private void eliminarFilasSeleccionadas() {
         ObservableList<Persona> seleccionadas = tablaPersonas.getSelectionModel().getSelectedItems();
@@ -74,6 +83,9 @@ public class Controlador {
         tablaPersonas.refresh(); // actualizar IDs
     }
 
+    /**
+     * Méthod para dar valores iniciales a la tabla y restaurarla al inicio
+     */
     @FXML
     private void restaurarFilas() {
         datos.clear();
