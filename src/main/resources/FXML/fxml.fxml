@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="es.marco.Controlador.Controlador">
+    <top>
+        <VBox spacing="10" alignment="TOP_CENTER">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+
+            <!-- Fila para Nombre con botón Añadir a la derecha -->
+            <HBox spacing="5" alignment="CENTER_LEFT">
+                <Label text="Nombre:"/>
+                <TextField fx:id="campoNombre" promptText="Nombre"/>
+                <Button text="Añadir" onAction="#agregarPersona"/>
+            </HBox>
+
+            <!-- Fila para Apellido -->
+            <HBox spacing="5" alignment="CENTER_LEFT">
+                <Label text="Apellido:"/>
+                <TextField fx:id="campoApellido" promptText="Apellido"/>
+            </HBox>
+
+            <!-- Fila para Fecha Nac -->
+            <HBox spacing="5" alignment="CENTER_LEFT">
+                <Label text="Fecha Nac:"/>
+                <DatePicker fx:id="campoFecha"/>
+            </HBox>
+
+            <!-- Fila con botones Restaurar y Eliminar alineados a la izquierda -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Button text="Restaurar Filas" onAction="#restaurarFilas"/>
+                <Button text="Eliminar Filas Seleccionadas" onAction="#eliminarFilasSeleccionadas"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <TableView fx:id="tablaPersonas" prefHeight="200">
+            <columns>
+                <TableColumn fx:id="colID" text="ID" prefWidth="50"/>
+                <TableColumn fx:id="colNombre" text="Nombre" prefWidth="100"/>
+                <TableColumn fx:id="colApellido" text="Apellido" prefWidth="100"/>
+                <TableColumn fx:id="colFecha" text="Fecha Nacimiento" prefWidth="120"/>
+            </columns>
+        </TableView>
+    </center>
+</BorderPane>
