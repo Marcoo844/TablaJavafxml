@@ -11,7 +11,7 @@
                 <Insets top="10" right="10" bottom="10" left="10"/>
             </padding>
 
-            <!-- Fila para Nombre con botón Añadir a la derecha -->
+            <!-- Fila para Nombre con botón añadir a la derecha -->
             <HBox spacing="5" alignment="CENTER_LEFT">
                 <Label text="Nombre:"/>
                 <TextField fx:id="campoNombre" promptText="Nombre"/>
