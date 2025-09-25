@@ -12,14 +12,23 @@ public class App extends Application {
     private static final Logger logger = LoggerFactory.getLogger(App.class);
     @Override
     public void start(Stage stage) {
+        /**
+         * Mensajes del logger
+         */
         logger.info("Lanzando la aplicación");
         logger.debug("Depuración mostrada");
         try {
+            /**
+             * Conexión con el fxml
+             */
             Parent root = FXMLLoader.load(getClass().getResource("/FXML/fxml.fxml"));
             Scene scene = new Scene(root);
             stage.setTitle("Tabla");
             stage.setScene(scene);
 
+            /**
+             * Establecimiento de el tamaño mínimo de la ventana
+             */
             stage.setMinWidth(300);
             stage.setMinHeight(350);
 

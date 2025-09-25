@@ -4,7 +4,7 @@
     <groupId>es.marco</groupId>
     <artifactId>TablaJavafxml</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <!--modificio para fatjar-->
+    <!--Modificio para fatjar-->
     <packaging>jar</packaging>
 
     <properties>
