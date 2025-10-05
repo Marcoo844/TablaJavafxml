@@ -1,8 +1,17 @@
-# Imagen base con Java
-FROM eclipse-temurin:20-jdk
+FROM eclipse-temurin:21-jdk-alpine
 
-# Copiar el JAR al contenedor
-COPY target/JavaFX-MariaDB-App-1.0.0.jar app.jar
+WORKDIR /app
 
-# Comando que se ejecuta al iniciar el contenedor
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+# Variables de entorno para la DB
+ENV DB_URL=jdbc:mariadb://mariadb:3306/test
+ENV DB_USER=root
+ENV DB_PASS=secret
+
+# Copiar JAR
+COPY target/JavaFX-MariaDB-App-1.0.0.jar /app/app.jar
+
+# Copiar recursos
+COPY src/main/resources /app/resources
+
+# Comando para ejecutar
+CMD ["java", "-jar", "app.jar"]
