@@ -13,27 +13,27 @@
 
             <!-- Fila para Nombre con botón añadir a la derecha -->
             <HBox spacing="5" alignment="CENTER_LEFT">
-                <Label text="Nombre:"/>
-                <TextField fx:id="campoNombre" promptText="Nombre"/>
-                <Button text="Añadir" onAction="#agregarPersona"/>
+                <Label text="%label.nombre"/>
+                <TextField fx:id="campoNombre" promptText="%prompt.nombre"/>
+                <Button text="%button.añadir" onAction="#agregarPersona"/>
             </HBox>
 
             <!-- Fila para Apellido -->
             <HBox spacing="5" alignment="CENTER_LEFT">
-                <Label text="Apellido:"/>
-                <TextField fx:id="campoApellido" promptText="Apellido"/>
+                <Label text="%label.apellido"/>
+                <TextField fx:id="campoApellido" promptText="%prompt.apellido"/>
             </HBox>
 
             <!-- Fila para Fecha Nac -->
             <HBox spacing="5" alignment="CENTER_LEFT">
-                <Label text="Fecha Nac:"/>
+                <Label text="%label.fecha"/>
                 <DatePicker fx:id="campoFecha"/>
             </HBox>
 
             <!-- Fila con botones Restaurar y Eliminar alineados a la izquierda -->
             <HBox spacing="10" alignment="CENTER_LEFT">
-                <Button text="Restaurar Filas" onAction="#restaurarFilas"/>
-                <Button text="Eliminar Filas Seleccionadas" onAction="#eliminarFilasSeleccionadas"/>
+                <Button text="%button.restaurar" onAction="#restaurarFilas"/>
+                <Button text="%button.eliminar" onAction="#eliminarFilasSeleccionadas"/>
             </HBox>
         </VBox>
     </top>
@@ -41,10 +41,10 @@
     <center>
         <TableView fx:id="tablaPersonas" prefHeight="200">
             <columns>
-                <TableColumn fx:id="colID" text="ID" prefWidth="50"/>
-                <TableColumn fx:id="colNombre" text="Nombre" prefWidth="100"/>
-                <TableColumn fx:id="colApellido" text="Apellido" prefWidth="100"/>
-                <TableColumn fx:id="colFecha" text="Fecha Nacimiento" prefWidth="120"/>
+                <TableColumn fx:id="colID" text="%table.id" prefWidth="50"/>
+                <TableColumn fx:id="colNombre" text="%table.nombre" prefWidth="100"/>
+                <TableColumn fx:id="colApellido" text="%table.apellido" prefWidth="100"/>
+                <TableColumn fx:id="colFecha" text="%table.fechaNacimiento" prefWidth="120"/>
             </columns>
         </TableView>
     </center>

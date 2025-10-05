@@ -1,68 +1,39 @@
 package es.marco.Modelo;
 
+
 import java.time.LocalDate;
 
+
 /**
- * Creación de la clase Persona
+ * Representa a una persona con nombre, apellido y fecha de nacimiento.
  */
 public class Persona {
-
-    /**
-     * Declaración de los atributos
-     */
     private String nombre;
     private String apellido;
     private LocalDate fechaNacimiento;
 
-    /**
-     * Contructor principal
-     * @param nombre
-     * @param apellido
-     * @param fechaNacimiento
-     */
+
     public Persona(String nombre, String apellido, LocalDate fechaNacimiento) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    /**
-     * Getter de nombre
-     * @return nombre
-     */
-    public String getNombre() {
-        return nombre;
-    }
-    /**
-     * Setter de nombre
-     */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-    /**
-     * Getter de apellido
-     * @return apellido
-     */
-    public String getApellido() {
-        return apellido;
-    }
-    /**
-     * Setter de apellido
-     */
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-    /**
-     * Getter de Fecha de Nacimiento
-     * @return fechaNacimiento
-     */
-    public LocalDate getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-    /**
-     * Setter de Fecha de Nacimiento
-     */
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
+
+    public String getNombre() { return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
+
+
+    public String getApellido() { return apellido; }
+    public void setApellido(String apellido) { this.apellido = apellido; }
+
+
+    public LocalDate getFechaNacimiento() { return fechaNacimiento; }
+    public void setFechaNacimiento(LocalDate fechaNacimiento) { this.fechaNacimiento = fechaNacimiento; }
+
+
+    @Override
+    public String toString() {
+        return nombre + " " + apellido + " (" + fechaNacimiento + ")";
     }
 }

@@ -1,5 +1,6 @@
 package es.marco;
 
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,37 +9,48 @@ import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
+import java.util.Locale;
+import java.util.ResourceBundle;
+
+
+/**
+ * Launcher principal de la aplicación.
+ */
 public class App extends Application {
+
+
     private static final Logger logger = LoggerFactory.getLogger(App.class);
+
+
     @Override
-    public void start(Stage stage) {
-        /**
-         * Mensajes del logger
-         */
-        logger.info("Lanzando la aplicación");
-        logger.debug("Depuración mostrada");
-        try {
-            /**
-             * Conexión con el fxml
-             */
-            Parent root = FXMLLoader.load(getClass().getResource("/FXML/fxml.fxml"));
-            Scene scene = new Scene(root);
-            stage.setTitle("Tabla");
-            stage.setScene(scene);
+    public void start(Stage primaryStage) throws Exception {
+        logger.info("Arrancando aplicación");
 
-            /**
-             * Establecimiento de el tamaño mínimo de la ventana
-             */
-            stage.setMinWidth(300);
-            stage.setMinHeight(350);
 
-            stage.show();
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+// Detect locale y cargar resource bundle
+        Locale locale = Locale.getDefault();
+        ResourceBundle bundle = ResourceBundle.getBundle("messages", locale);
+
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/fxml.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root, 700, 400);
+
+
+        primaryStage.setTitle(bundle.getString("TablaFXML"));
+        primaryStage.setScene(scene);
+        primaryStage.show();
+
+
+        logger.info("Interfaz mostrada");
     }
+
 
     public static void main(String[] args) {
         launch(args);
     }
 }
+
+
+
