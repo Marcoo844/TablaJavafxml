@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,17 +28,14 @@ public class App extends Application {
     public void start(Stage primaryStage) throws Exception {
         logger.info("Arrancando aplicación");
 
-
-// Detect locale y cargar resource bundle
         Locale locale = Locale.getDefault();
         ResourceBundle bundle = ResourceBundle.getBundle("messages", locale);
-
 
         try {
             URL fxmlUrl = getClass().getResource("/FXML/fxml.fxml");
             if (fxmlUrl == null) {
                 System.err.println("No se encontró el archivo FXML");
-                return;  // o lanza excepción
+                return;
             }
             FXMLLoader loader = new FXMLLoader(fxmlUrl, bundle);
             Parent root = loader.load();
@@ -45,19 +43,22 @@ public class App extends Application {
             Scene scene = new Scene(root, 700, 400);
             primaryStage.setTitle(bundle.getString("TablaFXML"));
             primaryStage.setScene(scene);
-            primaryStage.show();
 
-            // Permitir agrandar, pero no reducir más pequeño que 700x400
+            // Carga icono y lo asigna a la ventana
+            Image icon = new Image(getClass().getResourceAsStream("/iconos/tabla.png"));
+            primaryStage.getIcons().add(icon);
+
             primaryStage.setMinWidth(700);
             primaryStage.setMinHeight(400);
 
+            primaryStage.show();
             logger.info("Interfaz mostrada");
         } catch (Exception e) {
             e.printStackTrace();
             logger.error("Error cargando interfaz", e);
         }
-
     }
+
 
 
     public static void main(String[] args) {
