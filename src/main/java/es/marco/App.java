@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
+import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -18,7 +19,6 @@ import java.util.ResourceBundle;
  * Launcher principal de la aplicación.
  */
 public class App extends Application {
-
 
     private static final Logger logger = LoggerFactory.getLogger(App.class);
 
@@ -33,17 +33,25 @@ public class App extends Application {
         ResourceBundle bundle = ResourceBundle.getBundle("messages", locale);
 
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/fxml.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root, 700, 400);
+        try {
+            URL fxmlUrl = getClass().getResource("/FXML/fxml.fxml");
+            if (fxmlUrl == null) {
+                System.err.println("No se encontró el archivo FXML");
+                return;  // o lanza excepción
+            }
+            FXMLLoader loader = new FXMLLoader(fxmlUrl, bundle);
+            Parent root = loader.load();
 
+            Scene scene = new Scene(root, 700, 400);
+            primaryStage.setTitle(bundle.getString("TablaFXML"));
+            primaryStage.setScene(scene);
+            primaryStage.show();
+            logger.info("Interfaz mostrada");
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.error("Error cargando interfaz", e);
+        }
 
-        primaryStage.setTitle(bundle.getString("TablaFXML"));
-        primaryStage.setScene(scene);
-        primaryStage.show();
-
-
-        logger.info("Interfaz mostrada");
     }
 
 
