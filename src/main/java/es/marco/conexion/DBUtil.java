@@ -1,4 +1,4 @@
-package es.marco.dao;
+package es.marco.conexion;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
