@@ -46,6 +46,11 @@ public class App extends Application {
             primaryStage.setTitle(bundle.getString("TablaFXML"));
             primaryStage.setScene(scene);
             primaryStage.show();
+
+            // Permitir agrandar, pero no reducir más pequeño que 700x400
+            primaryStage.setMinWidth(700);
+            primaryStage.setMinHeight(400);
+
             logger.info("Interfaz mostrada");
         } catch (Exception e) {
             e.printStackTrace();
