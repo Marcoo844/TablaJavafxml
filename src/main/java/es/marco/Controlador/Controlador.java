@@ -10,6 +10,10 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 
+/**
+ * Controlador principal para gestionar la interfaz de la tabla de personas.
+ * Controla la interacción con los campos de texto, la tabla y los botones.
+ */
 public class Controlador {
 
     @FXML private TextField campoNombre;
@@ -25,7 +29,9 @@ public class Controlador {
     private ObservableList<Persona> datos = FXCollections.observableArrayList();
 
     /**
-     * Méthod para inicializar la tabla
+     * Inicializa la tabla con las columnas y sus propiedades.
+     * También carga datos iniciales.
+     * Este método es llamado automáticamente al cargar el FXML.
      */
     @FXML
     private void initialize() {
@@ -52,7 +58,9 @@ public class Controlador {
     }
 
     /**
-     * Méthod para insertar valores en la tabla mediante el botón de añadir
+     * Añade una nueva Persona a la tabla con los valores de los campos.
+     * Solo añade si todos los campos están completos.
+     * Luego limpia los campos de entrada.
      */
     @FXML
     private void agregarPersona() {
@@ -74,7 +82,8 @@ public class Controlador {
     }
 
     /**
-     * Méthod para eliminar las filas seleccionadas de la tabla
+     * Elimina las filas seleccionadas actualmente en la tabla.
+     * Actualiza la tabla para reflejar los cambios.
      */
     @FXML
     private void eliminarFilasSeleccionadas() {
@@ -84,7 +93,8 @@ public class Controlador {
     }
 
     /**
-     * Méthod para dar valores iniciales a la tabla y restaurarla al inicio
+     * Restaura las filas iniciales en la tabla.
+     * Limpia cualquier dato existente y añade dos entradas de ejemplo.
      */
     @FXML
     private void restaurarFilas() {
