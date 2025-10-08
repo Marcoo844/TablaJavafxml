@@ -1,38 +1,27 @@
-package es.marco.dao;
-
+package es.marco.conexion;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
+import java.util.concurrent.CompletableFuture;
 
-
-/**
- * Utilidad para obtener conexiones JDBC a MariaDB.
- * Leerá primero variables de entorno: DB_URL, DB_USER, DB_PASS
- * Si no existen, buscará en src/main/resources/db.properties
- */
 public class DBUtil {
     private static final Logger logger = LoggerFactory.getLogger(DBUtil.class);
     private static String url;
     private static String user;
     private static String pass;
 
-
     static {
-// Primero intentar variables de entorno
         url = System.getenv("DB_URL");
         user = System.getenv("DB_USER");
         pass = System.getenv("DB_PASS");
 
-
         if (url == null || user == null) {
-// Cargar desde properties
             try (InputStream in = DBUtil.class.getResourceAsStream("/db.properties")) {
                 if (in != null) {
                     Properties p = new Properties();
@@ -49,12 +38,23 @@ public class DBUtil {
         }
     }
 
-
+    // Conexión síncrona
     public static Connection getConnection() throws SQLException {
         if (url == null || user == null) {
-            throw new SQLException("Datos de conexión no configurados (DB_URL/DB_USER o db.properties)");
+            throw new SQLException("Datos de conexión no configurados");
         }
         logger.debug("Obteniendo conexión a DB: {}", url);
         return DriverManager.getConnection(url, user, pass);
+    }
+
+    // Conexión asíncrona usando CompletableFuture
+    public static CompletableFuture<Connection> getConnectionAsync() {
+        return CompletableFuture.supplyAsync(() -> {
+            try {
+                return getConnection();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 }
